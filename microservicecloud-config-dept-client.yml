@@ -1,0 +1,84 @@
+﻿spring:
+  profiles:
+    active:
+    - dev
+
+---
+server:
+  port: 8004
+  
+mybatis:
+  config-location: classpath:mybatis/mybatis.cfg.xml     
+  type-aliases-package: com.sunguoan.springcloud.entity  
+  mapper-locations:
+  - classpath:mybatis/mapper/**/*.xml                   
+  
+spring:
+  profiles: dev
+  application:
+    name: microservicecloud-dept                        
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource      
+    driver-class-name: org.gjt.mm.mysql.Driver        
+    url: jdbc:mysql://localhost:3306/test           
+    username: longmis
+    password: LongMIS1
+    dbcp2:
+      min-idle: 5          
+      initial-size: 5      
+      max-total: 5         
+      max-wait-millis: 200 
+      
+eureka: 
+  client: 
+    service-url: 
+      defaultZone: http://eureka4.com:7004/eureka/
+  instance:
+    instance-id: microserivcecloud-config-dept8004    
+    prefer-ip-address: true 
+
+info:
+  app.name: sunguoan-microservice
+  company.name: www.sunguoan.com
+  build.artifactId: $project.artifactId$
+  build.version: $project.version$
+  
+---
+server:
+  port: 8004
+  
+mybatis:
+  config-location: classpath:mybatis/mybatis.cfg.xml     
+  type-aliases-package: com.sunguoan.springcloud.entity  
+  mapper-locations:
+  - classpath:mybatis/mapper/**/*.xml                   
+  
+spring:
+  profiles: test
+  application:
+    name: microservicecloud-dept                        
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource      
+    driver-class-name: org.gjt.mm.mysql.Driver        
+    url: jdbc:mysql://localhost:3306/test2           
+    username: longmis
+    password: LongMIS1
+    dbcp2:
+      min-idle: 5          
+      initial-size: 5      
+      max-total: 5         
+      max-wait-millis: 200 
+      
+eureka: 
+  client: 
+    service-url: 
+      defaultZone: http://eureka4.com:7004/eureka/
+  instance:
+    instance-id: microserivcecloud-config-dept8004    
+    prefer-ip-address: true 
+
+info:
+  app.name: tj-microservice
+  company.name: www.tj.com
+  build.artifactId: $project.artifactId$
+  build.version: $project.version$

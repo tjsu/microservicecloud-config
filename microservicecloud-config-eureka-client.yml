@@ -1,0 +1,31 @@
+﻿spring:
+  profiles:
+    active:
+    - dev
+
+---
+server: 
+  port: 7004
+spring:
+  profiles: dev
+  application:
+    name: microservicecloud-config-eureka-client
+eureka: 
+  instance: 
+    hostname: eureka4.com
+  client: 
+    service-url: 
+      defaultZone: http://eureka4.com:7004/eureka/
+---
+server: 
+  port: 7004
+spring:
+  profiles: test
+  application:
+    name: microservicecloud-config-eureka-client
+eureka: 
+  instance: 
+    hostname: eureka4.com
+  client: 
+    service-url: 
+      defaultZone: http://eureka4.com:7004/eureka/
